@@ -18,7 +18,7 @@ let numberFormat = null
 window.addEventListener('load', () => {
   tabCountries = document.querySelector('#tab-countries')
   tabFavorites = document.querySelector('#tab-favorites')
-  countCountries = document.querySelector('#count-countries')
+  countCountries = document.querySelector('#count-contries')
   countFavorites = document.querySelector('#count-favorites')
 
   totalPopulationList = document.querySelector('#total-population-list')
@@ -110,5 +110,21 @@ function renderFavorites() {
   favoritesHTML += '</div>'
   tabFavorites.innerHTML = favoritesHTML
 }
-function renderSummary() { }
+
+
+
+function renderSummary() {
+  countCountries.textContent = allCountries.length
+  countFavorites.textContent = favoriteCountries.length
+
+  const totalPopulation = allCountries.reduce((accumulator, current) => {
+    return accumulator + current.population
+  }, 0)
+  const totalFavorites = favoriteCountries.reduce((accumulator, current) => {
+    return accumulator + current.population
+  }, 0)
+
+  totalPopulationList.textContent = totalPopulation
+  totalPopulationFavorites.textContent = totalFavorites
+}
 function handleCountryButtons() { }
