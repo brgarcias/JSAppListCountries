@@ -82,6 +82,7 @@ function renderCountryList() {
 }
 
 
+
 function renderFavorites() {
   let favoritesHTML = '<div>'
 
@@ -127,4 +128,36 @@ function renderSummary() {
   totalPopulationList.textContent = totalPopulation
   totalPopulationFavorites.textContent = totalFavorites
 }
-function handleCountryButtons() { }
+
+
+
+function handleCountryButtons() {
+  const countryButtons = Array.from(tabCountries.querySelectorAll('.btn'))
+  const favoriteButtons = Array.from(tabFavorites.querySelectorAll('.btn'))
+
+  countryButtons.forEach(button => {
+    button.addEventListener('click', () => addToFavorites(button.id))
+  })
+  favoriteButtons.forEach(button => {
+    button.addEventListener('click', () => removeFromFavorites(button.id))
+  })
+}
+
+function addToFavorites(id) {
+  const countryToAdd = allCountries.find(country => country.id === id)
+
+  favoriteCountries = [...favoriteCountries, countryToAdd]
+
+  favoriteCountries.sort((a, b) => {
+    return a.name.localeCompare(b.name)
+  })
+
+  allCountries = allCountries.filter(country => country.id !== id)
+  render()
+}
+
+
+
+function removeFromFavorites(id) {
+
+}
