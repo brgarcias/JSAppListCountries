@@ -62,7 +62,7 @@ function renderCountryList() {
     const countryHTML = `
       <div class='country'>
         <div>
-          <a id="${id}" class="waves-effect waves-light btn">+</a>
+          <a id="${id}" class="waves-effect waves-light btn"><i class="material-icons">send</i></a>
         </div>
         <div>
           <img src="${flag}" alt="${name}">
@@ -77,10 +77,38 @@ function renderCountryList() {
     `
     countriesHTML += countryHTML
   })
+  countriesHTML += '</div>'
   tabCountries.innerHTML = countriesHTML
 }
 
 
-function renderFavorites() { }
+function renderFavorites() {
+  let favoritesHTML = '<div>'
+
+  favoriteCountries.forEach(country => {
+    const { name, flag, id, population } = country
+
+    const favoriteCountryHTML = `
+      <div class='country'>
+        <div>
+          <a id="${id}" class="waves-effect waves-light btn red darken-4"><i class="material-icons">delete</i></a>
+        </div>
+        <div>
+          <img src="${flag}" alt="${name}">
+        </div>
+        <div>
+          <ul>
+            <li>${name}</li>
+            <li>${population}</li>
+          </ul>
+        </div>
+      </div>
+    `
+    favoritesHTML += favoriteCountryHTML
+  })
+
+  favoritesHTML += '</div>'
+  tabFavorites.innerHTML = favoritesHTML
+}
 function renderSummary() { }
 function handleCountryButtons() { }
