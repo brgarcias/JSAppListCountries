@@ -29,6 +29,8 @@ window.addEventListener('load', () => {
   fetchCountries()
 })
 
+
+
 async function fetchCountries() {
   const res = await fetch('https://restcountries.eu/rest/v2/all')
   const json = await res.json()
@@ -46,6 +48,8 @@ async function fetchCountries() {
   render()
 }
 
+
+
 function render() {
   renderCountryList()
   renderFavorites()
@@ -53,6 +57,8 @@ function render() {
 
   handleCountryButtons()
 }
+
+
 
 function renderCountryList() {
   let countriesHTML = '<div>'
